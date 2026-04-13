@@ -1,0 +1,39 @@
+-- 1. Tabla Clientes
+CREATE TABLE CLIENTES(
+    id_cliente INT AUTO_INCREMENT,
+    dni VARCHAR(9) NOT NULL UNIQUE,
+    nombre VARCHAR(50) NOT NULL, 
+    apellidos VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id_cliente)
+);
+
+-- 2. Tabla Vehiculos
+CREATE TABLE VEHICULOS(
+    bastidor VARCHAR(20),
+    modelo VARCHAR (50) NOT NULL,
+    matricula VARCHAR(10) UNIQUE,
+    PRIMARY KEY (bastidor)
+);
+
+-- 3. Tabla Contratos (CORREGIDA)
+CREATE TABLE CONTRATOS (
+    id_contrato INT AUTO_INCREMENT, -- Nombre corregido aquí
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
+    cuota_mensual DECIMAL (10,2) NOT NULL,
+    fk_cliente INT,
+    fk_vehiculo VARCHAR (20),
+    PRIMARY KEY (id_contrato), -- Ahora coincide con el nombre de arriba
+    FOREIGN KEY (fk_cliente) REFERENCES CLIENTES(id_cliente),
+    FOREIGN KEY (fk_vehiculo) REFERENCES VEHICULOS(bastidor)
+);
+
+-- 4. Tabla Pagos
+CREATE TABLE PAGOS (
+    id_pago INT AUTO_INCREMENT,
+    fecha_pago DATE NOT NULL, 
+    importe DECIMAL(10,2) NOT NULL,
+    fk_contrato INT NOT NULL,
+    PRIMARY KEY (id_pago),
+    CONSTRAINT fk_pago_Contrato FOREIGN KEY(fk_contrato) REFERENCES CONTRATOS(id_contrato) ON DELETE CASCADE
+);
