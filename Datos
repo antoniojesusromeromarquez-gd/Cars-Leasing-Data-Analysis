@@ -1,0 +1,22 @@
+USE BMW_Leasing_DB;
+
+-- 1. Insertamos los Clientes
+INSERT INTO CLIENTES (dni, nombre, apellidos) VALUES 
+('12345678A', 'Carlos', 'García Pérez'),
+('B87654321', 'Tech Solutions SL', 'Empresa');
+
+-- 2. Insertamos los Vehículos (BMW i4 y X5)
+INSERT INTO VEHICULOS (bastidor, modelo, matricula) VALUES 
+('WBA1123456789', 'BMW i4 M50', '1234-LMN'),
+('WBA987654321', 'BMW X5 xDrive45e', '5678-KPP');
+
+-- 3. Creamos los Contratos (Uniendo los IDs anteriores)
+INSERT INTO CONTRATOS (fecha_inicio, fecha_fin, cuota_mensual, fk_cliente, fk_vehiculo) VALUES 
+('2024-01-01', '2027-01-01', 850.50, 1, 'WBA1123456789'),
+('2024-02-15', '2028-02-15', 1100.00, 2, 'WBA987654321');
+
+-- 4. Registramos los primeros Pagos
+INSERT INTO PAGOS (fecha_pago, importe, fk_contrato) VALUES 
+('2024-02-01', 850.50, 1),
+('2024-03-01', 850.50, 1),
+('2024-03-15', 1100.00, 2);
