@@ -1,0 +1,17 @@
+SELECT 
+    c.nombre AS Cliente, 
+    v.modelo AS Vehiculo, 
+    con.cuota_mensual AS Cuota,
+    con.fecha_fin AS 'Vencimiento Contrato'
+FROM CLIENTES c
+JOIN CONTRATOS con ON c.id_cliente = con.fk_cliente
+JOIN VEHICULOS v ON con.fk_vehiculo = v.bastidor;
+
+--------------
+
+SELECT 
+    fk_contrato AS Numero_Contrato, 
+    SUM(importe) AS Total_Pagado_Hasta_Hoy,
+    COUNT(id_pago) AS Numero_de_Mensualidades
+FROM PAGOS
+GROUP BY fk_contrato;
