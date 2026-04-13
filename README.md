@@ -1,4 +1,3 @@
-# Cars-Leasing-Data-Analysis
 # Sistema de Gestión de Leasing - Case Study 🚗💻
 
 Este proyecto simula la arquitectura de base de datos para la gestión operativa de contratos de leasing y pagos en un entorno financiero automotriz.
